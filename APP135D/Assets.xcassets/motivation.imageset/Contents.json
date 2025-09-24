@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "20250718_1710_Hopeful New Beginnings_simple_compose_01k0exwwp0eyh9e87r7ysfkxgp.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
