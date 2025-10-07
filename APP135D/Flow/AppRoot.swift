@@ -12,7 +12,7 @@ struct AppRoot: View {
         rootView
             .buttonStyle(.plain)
             .dynamicTypeSize(.large)
-            .lockOrientation(AppDelegate.orientation)
+        //    .lockOrientation(AppDelegate.orientation)
             .animation(.default, value: isLoading)
             .animation(.default, value: isOnboarding)
     }
@@ -21,12 +21,16 @@ struct AppRoot: View {
     @ViewBuilder
     private var rootView: some View {
         ZStack {
-            NavigationStack {
-                TabsView()
+            if #available(iOS 16.0, *) {
+                NavigationStack {
+                    TabsView()
+                }
+                .environmentObject(progressManager)
+                .environmentObject(achievementManager)
+                .environmentObject(journalManager)
+            } else {
+                // Fallback on earlier versions
             }
-            .environmentObject(progressManager)
-            .environmentObject(achievementManager)
-            .environmentObject(journalManager)
 
             if isOnboarding {
                 OnboardingView()

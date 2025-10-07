@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyDynnBevdWv7blZo3LNTNDvPS_tQb5LZ5Q</string>
+	<key>GCM_SENDER_ID</key>
+	<string>810382053841</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.wuzgood.APP135D</string>
+	<key>PROJECT_ID</key>
+	<string>cleanstate-9748a</string>
+	<key>STORAGE_BUCKET</key>
+	<string>cleanstate-9748a.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:810382053841:ios:989cfa8eff0070c48cd0f0</string>
+	<key>DATABASE_URL</key>
+	<string>https://cleanstate-9748a-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>

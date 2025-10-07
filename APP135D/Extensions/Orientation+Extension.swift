@@ -28,12 +28,12 @@ extension View {
     @ViewBuilder
     func lockOrientation(_ orientation: UIInterfaceOrientationMask) -> some View {
         self
-            .onAppear() {
-                AppDelegate.orientation = orientation
-            }
-            .onDisappear() {
-                let currentOrientation = AppDelegate.orientation
-                AppDelegate.orientation = currentOrientation
-            }
+//            .onAppear() {
+//                AppDelegate.orientation = orientation
+//            }
+//            .onDisappear() {
+//                let currentOrientation = AppDelegate.orientation
+//                AppDelegate.orientation = currentOrientation
+//            }
     }
 }

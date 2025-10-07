@@ -88,8 +88,12 @@ struct AddEditEntryView: View {
         .hideSystemNavBar()
         .addDoneButtonToKeyboard()
         .sheet(isPresented: $showDatePicker) {
-            datePickerModal
-                .presentationDetents([.height(350)])
+            if #available(iOS 16.0, *) {
+                datePickerModal
+                    .presentationDetents([.height(350)])
+            } else {
+                // Fallback on earlier versions
+            }
         }
     }
     
@@ -131,52 +135,56 @@ struct AddEditEntryView: View {
     
     private var datePickerModal: some View {
         NavigationView {
-            VStack {
-                Text("Select Date & Time")
-                    .font(.poppins(.semibold, size: 18))
-                    .foregroundColor(.white)
-                    .padding(.top, 20)
-                
-                DatePicker(
-                    "",
-                    selection: $tempDate,
-                    in: ...Date(),
-                    displayedComponents: [.date, .hourAndMinute]
-                )
-                .datePickerStyle(.wheel)
-                .labelsHidden()
-                .colorScheme(.dark)
-                .padding(.horizontal, 20)
-                
-                Spacer()
-                
-                HStack(spacing: 16) {
-                    Button("Cancel") {
-                        showDatePicker = false
-                    }
-                    .font(.poppins(.medium, size: 16))
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 50)
-                    .background(Color("3D454C"))
-                    .cornerRadius(12)
+            if #available(iOS 16.0, *) {
+                VStack {
+                    Text("Select Date & Time")
+                        .font(.poppins(.semibold, size: 18))
+                        .foregroundColor(.white)
+                        .padding(.top, 20)
                     
-                    Button("Done") {
-                        date = tempDate
-                        showDatePicker = false
+                    DatePicker(
+                        "",
+                        selection: $tempDate,
+                        in: ...Date(),
+                        displayedComponents: [.date, .hourAndMinute]
+                    )
+                    .datePickerStyle(.wheel)
+                    .labelsHidden()
+                    .colorScheme(.dark)
+                    .padding(.horizontal, 20)
+                    
+                    Spacer()
+                    
+                    HStack(spacing: 16) {
+                        Button("Cancel") {
+                            showDatePicker = false
+                        }
+                        .font(.poppins(.medium, size: 16))
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 50)
+                        .background(Color("3D454C"))
+                        .cornerRadius(12)
+                        
+                        Button("Done") {
+                            date = tempDate
+                            showDatePicker = false
+                        }
+                        .font(.poppins(.medium, size: 16))
+                        .foregroundColor(.black)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 50)
+                        .background(Color("F0C042"))
+                        .cornerRadius(12)
                     }
-                    .font(.poppins(.medium, size: 16))
-                    .foregroundColor(.black)
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 50)
-                    .background(Color("F0C042"))
-                    .cornerRadius(12)
+                    .padding(.horizontal, 20)
+                    .padding(.bottom, 20)
                 }
-                .padding(.horizontal, 20)
-                .padding(.bottom, 20)
+                .background(Color("31383E"))
+                .presentationDetents([.medium])
+            } else {
+                // Fallback on earlier versions
             }
-            .background(Color("31383E"))
-            .presentationDetents([.medium])
         }
     }
     
