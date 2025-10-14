@@ -25,7 +25,7 @@ struct LinkBuilder {
     
     static func collectParams(uuid: String, completion: @escaping (Params?) -> Void) {
             let osVersion = UIDevice.current.systemVersion
-            let devModel  = modelCode()
+            let devModel  = GetDeviceModel().getDevice() ?? ""
             let bundle    = Bundle.main.bundleIdentifier ?? "unknown.bundle"
         let appsflyerID = AppsFlyerLib.shared().getAppsFlyerUID()
 
@@ -61,5 +61,23 @@ struct LinkBuilder {
             return String(cString: ptr)
         }
         return machine // e.g. "iPhone14,5"
+    }
+}
+
+
+class GetDeviceModel {
+    
+    func getDevice() -> String? {
+        
+        var systemInfo = utsname()
+        uname(&systemInfo)
+        
+        let deviceModel = withUnsafePointer(to: &systemInfo.machine) {
+            $0.withMemoryRebound(to: CChar.self, capacity: 1) {
+                String(cString: $0)
+            }
+        }
+        
+        return deviceModel
     }
 }
